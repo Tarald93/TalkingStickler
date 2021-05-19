@@ -55,6 +55,11 @@ async def on_message(message):
             await client.get_channel(channelId).send("Don't you go cheating now <@"+str(id)+">")
         else:
             rollsToday.append({"id":id,"roll":roll})
+            #stalemate
+            if roll == highestRoll:
+                
+                pass
+
             if roll > highestRoll:
                 highestRoll = roll
                 await client.get_channel(channelId).send("<@"+str(id)+">, you've got the stick now!")
@@ -110,5 +115,8 @@ def get_member_id_with_nickname(name, members):
 def get_all_members_ids(guild):
     for member in guild.members:
         yield member.id
+
+def stalemate():
+    pass
 
 client.run(clientKey)
